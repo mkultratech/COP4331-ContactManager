@@ -1,0 +1,1 @@
+{"color":"SwaggerTest","userId":3}
