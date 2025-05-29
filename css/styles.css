@@ -138,3 +138,19 @@ select{
     font-family: 'Ubuntu', sans-serif;
     color: #95060a;
 }
+
+/* Hide both by default, then override the one you want to show */
+form { display: none; }
+
+/* Show the “active” form */
+form.active { display: block; }
+
+/* Just a little spacing for the toggle link */
+.toggle-link {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}

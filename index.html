@@ -1,22 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Contact Manager</title>
+	<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
+	<main class="container">
+		<h1>Dex - Your Favorite Contact Manager</h1>
 
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
+		<!-- Sign Up Form -->
+		<form id="signupForm">
+			<h2>Create Account</h2>
+			<input type="text" 		id="signupFirst" 	name="firstName" 	placeholder="First Name" required>
+			<input type="text" 		id="signupLast" 	name="lastName" 	placeholder="Last Name" required>
+			<input type="text" 		id="signupUsername" name="username" 	placeholder="Username" required />
+			<input type="email" 	id="signupEmail" 	name="email" 		placeholder="Email" required />
+			<input type="password" 	id="signupPassword" name="password" 	placeholder="Password" required />
+			<button type="submit">Sign Up</button>
+			<p id="signup-message" class="message"></p>
+			<span class="toggle-link" id="toLogin">Already have an account? Sign in</span>
+		</form>
+
+		<!-- Login Form -->
+		<form id="loginForm" class="active">
+			<h2>Login</h2>
+			<input type="text" id="loginUsername" placeholder="Username" required />
+			<input type="password" id="loginPassword" placeholder="Password" required />
+			<button type="submit">Login</button>
+			<p id="login-message" class="message"></p>
+			<span class="toggle-link" id="toSignup">Don’t have an account? Create an account</span> 
+		</form>
+	</main>
+
+	<!-- <script src="md5.js"></script> -->
+	<script src="js/code.js"></script>
 
 </body>
 </html>

@@ -3,11 +3,11 @@
     error_reporting(E_ALL);
 
 	$inData = getRequestInfo();
-	$login = trim($inData['login'] ?? '');
+	$username = trim($inData['username'] ?? '');
 	$password = trim($inData['password'] ?? '');
 	
 	// 2. Validate input
-	if ($login === '' || $password === '')
+	if ($username === '' || $password === '')
 	{
 		http_response_code(400);
 		echo json_encode(["id" => 0, "firstName" => "", "lastName" => "", "error" => "Missing username and/or password!"]);
@@ -23,9 +23,9 @@
 		exit;
 	}
 
-	// 4. Prepare statement used to fetch user corresponding with given login
-	$stmt = $conn->prepare('SELECT ID, FirstName, LastName, Password FROM Users WHERE Login = ? ');
-	$stmt->bind_param('s', $login);
+	// 4. Prepare statement used to fetch user corresponding with given username
+	$stmt = $conn->prepare('SELECT ID, FirstName, LastName, Password FROM Users WHERE Username = ? ');
+	$stmt->bind_param('s', $username);
 	$stmt->execute();
 	$result = $stmt->get_result();
 
@@ -45,7 +45,7 @@
 	
 	else 
 	{
-		// No such login
+		// No such username
 		http_response_code(404);
 		echo json_encode(["id" => 0, "firstName" => "", "lastName" => "", "error" => "User Not Found"]);
 	}

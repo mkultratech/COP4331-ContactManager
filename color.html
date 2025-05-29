@@ -1,4 +1,56 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacts Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1 id="welcome">Welcome!</h1>
+      <button id="logoutBtn">Log out</button>
+    </header>
+
+    <!-- Search bar -->
+    <section id="searchSection">
+      <input type="text" id="searchTerm" placeholder="Search contacts…" />
+      <button id="searchBtn">Search</button>
+      <p id="searchMessage" class="message"></p>
+    </section>
+
+    <!-- Contact list -->
+    <section id="contactsSection">
+      <table id="contactsTable">
+        <thead>
+          <tr>
+            <th>First</th><th>Last</th><th>Phone</th><th>Email</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be injected here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add contact form -->
+    <section id="addSection">
+      <h2>Add New Contact</h2>
+      <input type="text" id="addFirst" placeholder="First Name" required />
+      <input type="text" id="addLast"  placeholder="Last Name"  required />
+      <input type="tel"  id="addPhone" placeholder="Phone" />
+      <input type="email" id="addEmail" placeholder="Email" />
+      <button id="addBtn">Add Contact</button>
+      <p id="addMessage" class="message"></p>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
+
+<!-- <html>
 <head>
 	<title>COP 4331 LAMP Stack Demo</title>
 	<script type="text/javascript" src="js/code.js"></script>
@@ -37,4 +89,4 @@
 </div>
 
 </body>
-</html>
+</html> -->

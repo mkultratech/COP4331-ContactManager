@@ -28,6 +28,14 @@
         exit;
     }
 
+
+
+    
+    // TODO: CHECK IF CONTACT ALREADY EXISTS
+
+
+
+
     // 4. Prepare and execute INSERT
     $stmt = $conn->prepare("INSERT INTO Contacts (FirstName, LastName, Phone, Email, UserID) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $userId);
@@ -51,6 +59,7 @@
     // 5. Clean up
     $stmt->close();
     $conn->close();
+
 
     function getRequestInfo() 
     {
