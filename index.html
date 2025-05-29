@@ -1,39 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dex – Contact Manager</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Dex - Login or Sign Up</title>
+
+  <!-- Google Fonts for body and titles -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <link rel="stylesheet" href="css/test.css">
 </head>
-<body>
-  <main class="container">
-    <h1 id="title">Dex - Contact Manager</h1>
+
+<body></body>
+
+	<!-- Centered container for auth -->
+  <main class="container auth-screen">
+    <h1 id="title">Dex: Stay in Touch</h1>
+
+		<!-- Mascot and App Title -->
+    <img src="images/dex-mascot.png" alt="Dex the friendly robot" class="mascot" />
+    <!-- <h1 id="title" class="app-title">Dex</h1> -->
 
     <!-- Login form -->
-    <form id="loginForm" class="active">
-      <h2>Login</h2>
-      <input type="text" id="loginUsername" placeholder="Username" required>
-      <input type="password" id="loginPassword" placeholder="Password" required>
-      <button id="loginButton" type="submit" class="buttons">Login</button>
-      <div id="login-message" class="message"></div>
-      <span class="toggle-link" id="toSignup">Don’t have an account? Create one</span>
+    <form id="loginForm" class="form-card active">
+      <h2>Log In</h2>
+
+      <input type="text" id="loginUsername" placeholder="Username" required/>
+      <input type="password" id="loginPassword" placeholder="Password" required/>
+			
+      <button id="loginButton" type="submit" class="buttons">Sign in</button>
+			
+			<!-- Error / Status Message -->
+			<p id="login-message" class="message"></p>
+
+			<!-- Toggle Link to Sign-Up -->
+      <p class="toggle-p">
+        Don’t have an account?
+        <span class="toggle-link" id="toSignup">Sign up</span>
+      </p>
     </form>
+
 
     <!-- Sign-up form -->
-    <form id="signupForm">
+    <form id="signupForm" class="form-card">
       <h2>Create Account</h2>
-      <input type="text" id="signupFirst" placeholder="First Name" required>
-      <input type="text" id="signupLast" placeholder="Last Name" required>
-      <input type="text" id="signupUsername" placeholder="Username" required>
-      <input type="email" id="signupEmail" placeholder="Email" required>
-      <input type="password" id="signupPassword" placeholder="Password" required>
+
+      <input type="text" id="signupFirst" placeholder="First Name" required />
+      <input type="text" id="signupLast" placeholder="Last Name" required />
+
+      <input type="text" id="signupUsername" placeholder="Username" required />
+      <input type="email" id="signupEmail" placeholder="Email" required />
+
+      <input type="password" id="signupPassword" placeholder="Password" required />
+
       <button id="signupButton" type="submit" class="buttons">Sign Up</button>
-      <div id="signup-message" class="message"></div>
-      <span class="toggle-link" id="toLogin">Already have an account? Sign in</span>
+
+      <!-- <div id="signup-message" class="message"></div> -->
+			<!-- Error / Status Message -->
+      <p id="signup-message" class="message"></p>
+
+			 <!-- Toggle Link to Login -->
+      <p class="toggle-p">
+        Already have an account?
+        <span class="toggle-link" id="toLogin">Log in</span>
+      </p>
+
+        <!-- <span class="toggle-link" id="toLogin">Already have an account? Sign in</span> -->
     </form>
+
   </main>
 
+	<!-- Auth logic -->
   <script src="js/code.js"></script>
 </body>
 </html>

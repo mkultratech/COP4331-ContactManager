@@ -1,0 +1,327 @@
+/*--------------------------------------
+  1) COLOR & FONT VARIABLES
+---------------------------------------*/
+:root 
+{
+	/* Backgrounds & cards */
+	--bg:           #f9f9f9;       /* off-white page bg */
+	--card-bg:      #ffffff;       /* white cards */
+
+	/* Brand palette */
+	--primary:      #2aa198;       /* friendly teal */
+	--primary-h:    #238478;       /* darker teal for hover */
+	--highlight:    #00ffe7;       /* neon-cyan focus/glow */
+	--accent:       #f1c40f;       /* mustard pop for highlights */
+	--accent-h:     #d4a30c;       /* hover/darker mustard */
+	--danger:       #e74c3c;
+	--danger-h:     #c0392b;
+
+	/* Input glow */
+	--highlight:    rgba(241,196,15,0.4); /* semi-transparent mustard */
+
+	/* Text */
+	--text:         #2e3d49;       /* charcoal, dark slate */
+
+	/* Typography */
+	--font-body:    'Ubuntu', sans-serif;
+	--font-title:   'Fredoka One', cursive;
+}
+
+/*--------------------------------------
+  2) RESET & BASE
+---------------------------------------*/
+* 
+{
+  box-sizing: border-box;
+  margin:    0;
+  padding:   0;
+}
+
+body 
+{
+  background:       var(--bg);
+  color:            var(--text);
+  font-family:      var(--font-body);
+  text-align:       center;
+
+  /* Center content vertically on tall screens */
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  min-height:       100vh;
+  padding:          2rem;
+}
+
+/*--------------------------------------
+  3) TYPOGRAPHY & CONTAINERS
+---------------------------------------*/
+h1.app-title, h1#title 
+/* Playful heading font! */
+{
+  font-family:    var(--font-title);
+  color:          var(--primary);
+  font-size:      2.5rem;
+  margin-bottom:  1rem;
+}
+
+h2 
+{
+  font-size:     2rem;
+  margin-bottom: 1rem;
+}
+
+.container 
+{
+	/* Center and limit width */
+	width:       90%;
+	max-width:   800px;
+	margin:      0 auto;
+}
+
+/*--------------------------------------
+  4) AUTH SCREEN (LOGIN / SIGNUP)
+---------------------------------------*/
+.auth-screen 
+{
+	/* Limit width on mobile device screens */
+	width:           90%;
+	max-width:       360px;
+	margin:          auto;
+}
+
+.mascot 
+{
+	/* Mascot image styling */
+	width:          80px;
+	margin:         0 auto 1rem;
+	display:        block;
+}
+
+.form-card 
+{
+	/* Card look for forms */
+	background:      var(--card-bg);
+	padding:         1.5rem;
+	border-radius:   16px;
+	box-shadow:      0 6px 16px rgba(0,0,0,0.05);
+	margin-bottom:   1rem;
+
+	/* Hidden until toggled active */
+	display:         none;
+	text-align:      center;
+}
+
+.form-card.active 
+{
+	/* Show active form */
+  display: block;
+}
+
+.auth-screen .mascot {
+  width:          80px;
+  margin:         0 auto 1rem;
+  display:        block;
+}
+
+/*--------------------------------------
+  5) FORMS & TOGGLE LINKS
+---------------------------------------*/
+form {
+  display:         none;
+}
+
+form.active {
+  display:         block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
+  width:           100%;
+  max-width:       100%;
+  margin:          0.5rem 0 1rem;
+  padding:         0.75rem 1rem;
+
+	/* Rounded pill shape */
+  border:          1px solid #ccc;
+  border-radius:   25px;
+  font-family:     var(--font-body);
+  text-align:      center;
+  transition:      box-shadow 0.2s, border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+	/* Mustard color glow on focus */
+  outline:         none;
+  border-color:    var(--accent);
+  box-shadow:      0 0 0 3px var(--highlight);
+}
+
+.toggle-link {
+	/* Link to switch forms */
+  display:         block;
+  margin-top:      0.5rem;
+  font-size:       0.9rem;
+  color:           var(--primary);
+  cursor:          pointer;
+  text-decoration: underline;
+}
+
+/*--------------------------------------
+  6) BUTTONS
+---------------------------------------*/
+button,
+.buttons,
+.btn {
+  /* Full-width buttons */
+  font-size:       1rem;
+  padding:         0.75rem;
+  margin:          0.5rem auto;
+  width:           100%;
+  max-width:       100%;
+  cursor:          pointer;
+
+  /* Teal background, white text */
+  background:      var(--primary);
+  color:           #fff;
+
+  /* Rounded, lift on hover */
+  border:          none;
+  border-radius:   25px;
+  transition:      transform 0.1s ease,
+                   box-shadow 0.1s ease,
+                   background 0.2s;
+  /* display:         block; */
+}
+
+button:hover,
+.buttons:hover,
+.btn:hover {
+  background:      var(--primary-h);
+  transform:       translateY(-2px);
+  box-shadow:      0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn.danger {
+  /* Error action */
+  background:      var(--danger);
+}
+
+.btn.danger:hover {
+  background:      var(--danger-h);
+}
+
+/*--------------------------------------
+  7) DASHBOARD HEADER
+---------------------------------------*/
+header.dash-header {
+  /* Teal banner */
+  width:            100%;
+  background:       var(--primary);
+  color:            #fff;
+  padding:          1rem;
+
+  /* Flex layout for logo, greeting, logout */
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  flex-wrap:        wrap;
+}
+
+
+.dash-mascot {
+  /* Small mascot in header */
+  width:           40px;
+  margin-right:    0.5rem;
+}
+
+/*--------------------------------------
+  8) DASHBOARD LAYOUT & CARDS
+---------------------------------------*/
+.dash-screen {
+  /* Centered cards */
+  width:           95%;
+  max-width:       600px;
+  margin:          1rem auto;
+}
+
+.card {
+  /* Reusable card style */ 
+  background:      var(--card-bg);
+  padding:         1rem;
+  border-radius:   16px;
+  margin-bottom:   1rem;
+  box-shadow:      0 1px 6px rgba(0, 0, 0, 0.05);
+  text-align:      left;
+}
+
+/*--------------------------------------
+  9) TABLE & FLIP ANIMATION
+---------------------------------------*/
+.contact-table {
+  /* Full width table */
+  width:             100%;
+  border-collapse:   collapse;
+  border-radius:     12px;
+  overflow:          hidden;
+  margin:            1rem 0;
+}
+
+.contact-table thead {
+  /* Little bit of shading for header */
+  background:        rgba(0,0,0,0.05);
+  font-weight:       600;
+}
+
+.contact-table th,
+.contact-table td {
+  /* Some cell padding and dividing line */
+  padding:           0.75rem 1rem;
+  border-bottom:     1px solid rgba(0,0,0,0.05);
+  text-align:        left;
+}
+
+/* Fun flip-in animation for rows */
+@keyframes flipIn {
+  from { transform: rotateX(-90deg); opacity: 0; }
+  to   { transform: rotateX(0);       opacity: 1; }
+}
+
+.contact-table tbody tr {
+  animation:         flipIn 0.5s ease-out;
+  transform-origin:  top center;
+}
+
+/*--------------------------------------
+ 10) MISC & UTILITIES
+---------------------------------------*/
+.hidden {
+  display:  none !important;
+}
+
+.message,
+.result-text {
+  display: inline-block;
+  width: 100%;
+  font-size:   0.9rem;
+  color:       var(--danger);
+  margin:      0.5rem 0;
+  text-align:  center;
+}
+
+/*--------------------------------------
+ 11) RESPONSIVENESS
+---------------------------------------*/
+@media (max-width: 480px) {
+  header.dash-header {
+    flex-direction: column;
+    text-align:     center;
+  }
+  header.dash-header button {
+    margin-top:     0.5rem;
+    width:          100%;
+  }
+}

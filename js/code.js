@@ -1,4 +1,6 @@
-function showMessage(id, message) {
+// Takes care of Login and Sign Up/Account Creation
+function showMessage(id, message) 
+{
   document.getElementById(id).textContent = message;
 }
 
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   signupForm.addEventListener('submit', async e => {
     e.preventDefault();
     showMessage('signup-message', '');
+
     const payload = {
       firstName: document.getElementById('signupFirst').value.trim(),
       lastName: document.getElementById('signupLast').value.trim(),
@@ -35,26 +38,35 @@ document.addEventListener('DOMContentLoaded', () => {
       password: document.getElementById('signupPassword').value,
     };
 
-    if (!payload.firstName || !payload.lastName || !payload.username || !payload.email || !payload.password) {
+    if (!payload.firstName || !payload.lastName || !payload.username || !payload.email || !payload.password)
+    { 
       return showMessage('signup-message', 'All fields are required.');
     }
 
-    try {
+    try 
+    {
       const res = await fetch('/LAMPAPI/SignUp.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
       });
 
       const json = await res.json();
 
-      if (res.status === 201) {
+      if (res.status === 201) 
+      {
         showMessage('signup-message', 'Account created! Please log in.');
         setTimeout(() => toLogin.click(), 1000);
-      } else {
+      } 
+
+      else 
+      {
         showMessage('signup-message', json.error || 'Sign-up failed.');
       }
-    } catch (err) {
+    } 
+
+    catch (err) 
+    {
       showMessage('signup-message', 'Network error. Try again.');
     }
   });
@@ -64,16 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     showMessage('login-message', '');
 
-    const payload = {
+    const payload = 
+    {
       username: document.getElementById('loginUsername').value.trim(),
       password: document.getElementById('loginPassword').value
     };
 
-    if (!payload.username || !payload.password) {
+    if (!payload.username || !payload.password)
+    { 
       return showMessage('login-message', 'Both fields are required.');
     }
 
-    try {
+    try 
+    {
       const res = await fetch('/LAMPAPI/Login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -82,14 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const json = await res.json();
 
-      if (res.status === 200 && json.id > 0) {
+      if (res.status === 200 && json.id > 0) 
+      {
         sessionStorage.setItem('userId', json.id);
         sessionStorage.setItem('userFirstName', json.firstName);
         window.location.href = 'color.html';
-      } else {
+      } 
+      
+      else 
+      {
         showMessage('login-message', json.error || 'Login failed.');
       }
-    } catch (err) {
+    } 
+    catch (err) 
+    {
       showMessage('login-message', 'Network error. Try again.');
     }
   });
