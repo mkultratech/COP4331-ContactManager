@@ -101,12 +101,22 @@ document.addEventListener('DOMContentLoaded', () => {
     contactsTbody.addEventListener('click', async e => {
         if (e.target.classList.contains('delBtn')) {
             const id = Number(e.target.dataset.id);
-            await fetch('/LAMPAPI/DeleteContact.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contactId: id })
-            });
-            fetchContacts(searchTerm.value.trim());
+            try {
+                const res = await fetch('/LAMPAPI/DeleteContact.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contactId: id })
+                });
+                const json = await res.json();
+                if (res.status === 200 && json.error === "") {
+                    fetchContacts(searchTerm.value.trim());
+                } else {
+                    alert("Failed to delete: " + (json.error || "Unknown error"));
+                }
+            } catch {
+                alert("Network error while deleting contact.");
+            }
         }
     });
 });
+
