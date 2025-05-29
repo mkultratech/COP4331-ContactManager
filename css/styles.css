@@ -49,12 +49,16 @@ h2 { font-size: 2rem; margin-bottom: 1.5rem; }
 /* Buttons */
 .buttons, button, .btn {
   font-size: 1.2rem;
+  width: 80%;
+  max-width: 400px;
+  margin: 0.5rem auto;
   padding: 0.75rem 2rem;
   border: none;
   border-radius: 25px;
   background: var(--accent);
   color: #fff;
   cursor: pointer;
+  display: block;
   transition: background 0.2s, opacity 0.2s;
 }
 .buttons:hover, button:hover, .btn:hover { background: var(--accent-h); opacity: 0.85; }
@@ -63,7 +67,12 @@ h2 { font-size: 2rem; margin-bottom: 1.5rem; }
 #logoutButton { width: auto; margin-top: 1rem; }
 
 /* Form Elements */
-input[type="text"], input[type="password"], input[type="email"], select {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
+  display: block;
   width: 80%;
   max-width: 400px;
   margin: 0.5rem auto 1rem;
@@ -73,9 +82,20 @@ input[type="text"], input[type="password"], input[type="email"], select {
   text-align: center;
   font-family: var(--font);
 }
-select { font-size: 0.9rem; border-radius: 15px; }
-.form-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-.form-row input { flex: 1 1 230px; }
+
+select {
+  font-size: 0.9rem;
+  border-radius: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.form-row input {
+  flex: 1 1 230px;
+}
 
 /* Tables */
 .contact-table {
@@ -88,8 +108,15 @@ select { font-size: 0.9rem; border-radius: 15px; }
   border-radius: 0.75rem;
   overflow: hidden;
 }
-.contact-table th, .contact-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.05); text-align: left; }
-.contact-table thead { background: rgba(0,0,0,0.05); font-weight: 600; }
+.contact-table th, .contact-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  text-align: left;
+}
+.contact-table thead {
+  background: rgba(0,0,0,0.05);
+  font-weight: 600;
+}
 
 /* Messages */
 #inner-title, #loginResult, #colorAddResult, .message, .result-text {
@@ -100,9 +127,23 @@ select { font-size: 0.9rem; border-radius: 15px; }
   color: #95060a;
   font-family: var(--font);
 }
-.hidden { display: none !important; }
+
+.hidden {
+  display: none !important;
+}
 
 /* Forms & Links */
-form { display: none; }
-form.active { display: block; }
-.toggle-link { display: block; margin-top: 0.5em; font-size: 0.9em; cursor: pointer; color: var(--accent); text-decoration: underline; }
+form {
+  display: none;
+}
+form.active {
+  display: block;
+}
+.toggle-link {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: var(--accent);
+  text-decoration: underline;
+}

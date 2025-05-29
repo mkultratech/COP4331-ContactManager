@@ -15,19 +15,21 @@
       <h2>Login</h2>
       <input type="text" id="loginUsername" placeholder="Username" required>
       <input type="password" id="loginPassword" placeholder="Password" required>
-      <button type="submit" class="buttons">Login</button>
+      <button id="loginButton" type="submit" class="buttons">Login</button>
+      <div id="login-message" class="message"></div>
       <span class="toggle-link" id="toSignup">Don’t have an account? Create one</span>
     </form>
 
-    <!-- Sign‑up form -->
+    <!-- Sign-up form -->
     <form id="signupForm">
       <h2>Create Account</h2>
-      <input type="text"     id="signupFirst"  placeholder="First Name" required>
-      <input type="text"     id="signupLast"   placeholder="Last Name"  required>
-      <input type="text"     id="signupUsername" placeholder="Username" required>
-      <input type="email"    id="signupEmail"  placeholder="Email"     required>
+      <input type="text" id="signupFirst" placeholder="First Name" required>
+      <input type="text" id="signupLast" placeholder="Last Name" required>
+      <input type="text" id="signupUsername" placeholder="Username" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
       <input type="password" id="signupPassword" placeholder="Password" required>
-      <button type="submit" class="buttons">Sign Up</button>
+      <button id="signupButton" type="submit" class="buttons">Sign Up</button>
+      <div id="signup-message" class="message"></div>
       <span class="toggle-link" id="toLogin">Already have an account? Sign in</span>
     </form>
   </main>
