@@ -88,33 +88,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		});
 
 
-
-// document.getElementById('signupForm').addEventListener('submit', function (e) 
-// {
-//   e.preventDefault();
-//   const username = document.getElementById('signupUsername').value.trim();
-//   const password = document.getElementById('signupPassword').value;
-
-//   if (!username || !password) {
-//     showMessage('signup-message', 'Please enter both fields.');
-//     return;
-//   }
-
-// //   const users = JSON.parse(localStorage.getItem('users') || '{}');
-
-//   if (users[username]) {
-//     showMessage('signup-message', 'Username already exists.');
-//     return;
-//   }
-
-//   users[username] = md5(password);
-//   localStorage.setItem('users', JSON.stringify(users));
-//   showMessage('signup-message', 'Signup successful! You can now log in.');
-//   document.getElementById('signupForm').reset();
-// });
-
 // LOGIN HANDLER
-// LOG IN
   loginForm.addEventListener('submit', async e => 
 	{
 		e.preventDefault();
@@ -122,11 +96,11 @@ document.addEventListener('DOMContentLoaded', () =>
 
 		const payload = 
 		{
-			login:    document.getElementById('loginUsername').value.trim(),
+			username: document.getElementById('loginUsername').value.trim(),
 			password: document.getElementById('loginPassword').value
 		};
 
-		if (!payload.login || !payload.password) 
+		if (!payload.username || !payload.password) 
 		{
 			return showMessage('login-message', 'Both fields are required.');
 		}
@@ -145,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () =>
 			{
 				// store the userId for subsequent API calls
 				sessionStorage.setItem('userId', json.id);
+				sessionStorage.setItem('userFirstName', json.firstName);
 
 				// optionally store name: sessionStorage.setItem('userName', json.firstName);
 				window.location.href = 'color.html';
