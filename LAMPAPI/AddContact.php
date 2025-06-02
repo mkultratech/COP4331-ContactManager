@@ -19,6 +19,14 @@
         exit;
     }
 
+    // Validate email format
+    if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) 
+    {
+        http_response_code(400);
+        echo json_encode(['contactId' => 0, 'error' => 'Invalid email address']);
+        exit;
+    }
+
     // 3. Connect to MySQL
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error)
@@ -28,15 +36,25 @@
         exit;
     }
 
+    // 4. Check for duplicate contact for this user
+    $duplicateStmt = $conn->prepare('SELECT Email, Phone FROM Contacts WHERE Email = ? AND Phone = ?');
+    $duplicateStmt->bind_param('si', $email, $phone);
+    $duplicateStmt->execute();
+    $duplicateStmt->store_result();
 
+    if ($duplicateStmt->num_rows > 0)
+    {
+        http_response_code(409);
+        echo json_encode(['contactId' => 0, 'error' => 'Phone number and/or Email already exists']);
+        $duplicateStmt->close();
+        $conn->close();
+        exit;
+    }
 
-    
-    // TODO: CHECK IF CONTACT ALREADY EXISTS
+    $duplicateStmt->close();
+  
 
-
-
-
-    // 4. Prepare and execute INSERT
+    // 4. Prepare and execute INSERT contact
     $stmt = $conn->prepare("INSERT INTO Contacts (FirstName, LastName, Phone, Email, UserID) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $userId);
     //$stmt->execute();
@@ -45,7 +63,7 @@
     {
         // INSERT failed
         http_response_code(500);
-        echo json_encode(['contactId' => 0,'error' => 'Execute failed: ' . $stmt->error]);
+        echo json_encode(['contactId' => 0,'error' => 'Failed to add contact; ' . $stmt->error]);
         $stmt->close();
         $conn->close();
         exit;

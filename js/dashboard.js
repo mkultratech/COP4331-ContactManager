@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add or update contact handler
     addBtn.addEventListener('click', async () => {
         addMsg.textContent = '';
+
         const payload = {
             userId: Number(userId),
             firstName: addFirst.value.trim(),
